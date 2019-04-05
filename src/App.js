@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import styled, { keyframes } from "styled-components";
-import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap/all";
+import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
 import NameSvg from "./name";
 import Player from "./Player";
 import ScrollSpy from "./ScrollSpy";
