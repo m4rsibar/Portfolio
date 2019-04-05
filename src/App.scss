@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Neou-Thin";
+  src: url("./fonts/Neou-Thin.ttf");
+}
+@font-face {
+  font-family: "Neou-Bold";
+  src: url("./fonts/Neou-Bold.ttf");
+}
+
+.hero {
+  background-image: url("./img/portpic.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+body {
+  background: rgb(238, 240, 241);
+}
+
+* {
+  box-sizing: border-box;
+  // font-family: Neou;
+}
+
+svg {
+  height: 80%;
+  z-index: 999999999;
+}
+path {
+  stroke: #000000;
+  fill: #000000;
+  stroke-dasharray: 500;
+  opacity: 2;
+  animation: animate 2s cubic-bezier(0, 0.23, 1, 0.1);
+}
+
+.noThanks {
+  position: absolute;
+  bottom: -1.5em;
+  left: -3em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+
+  &:hover {
+    background: blue;
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    fill: none;
+    stroke-dashoffset: 500;
+  }
+
+  30% {
+    opacity: 1;
+    fill: none;
+    stroke-dashoffset: 500;
+  }
+
+  90% {
+    fill: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    fill: rgb(0, 0, 0);
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.playButton {
+  animation: pulse ease-in-out 5s infinite;
+}
+
+.container {
+  grid-column: 11/13;
+  grid-row: 1/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .loader {
+    height: 50px;
+    width: fit-content;
+    display: flex;
+    transform: rotate(180deg);
+    @for $i from 1 through 20 {
+      $time: ($i/20) + s;
+      span:nth-child(#{$i}) {
+        animation-delay: $time;
+      }
+    }
+    span {
+      display: block;
+      height: 0;
+      background: white;
+      border: 0.3px solid black;
+      margin: 0 4px;
+      width: 5px;
+      height: 100%;
+      animation: line 1s ease infinite;
+      @keyframes line {
+        0%,
+        100% {
+          height: 100%;
+        }
+        50% {
+          height: 50%;
+        }
+      }
+    }
+  }
+}
