@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import NameSvg from "./name";
+import Scroll from "./Scroll";
+import Music from "./Music";
+import Hero from "./Hero";
 import "./App.scss";
 import styled, { keyframes } from "styled-components";
 import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
-import NameSvg from "./name";
-import Player from "./Player";
+import { HashRouter, Route } from "react-router-dom";
+import MyWork from "./MyWork";
 
 class App extends Component {
   nav = null;
@@ -47,92 +51,56 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper ref={div => (this.wrapper = div)}>
-        <Nav ref={div => (this.nav = div)}>
-          Logo
-          <ul>
-            {// map through the elements
-            this.state.liText.map((element, index) => (
-              <a href="#">
-                <li key={index} ref={li => (this.lis[index] = li)}>
-                  {element.li}
-                </li>
-              </a>
+      <HashRouter>
+        <Wrapper ref={div => (this.wrapper = div)}>
+          <Nav ref={div => (this.nav = div)}>
+            Logo
+            <ul>
+              {this.state.liText.map((element, index) => (
+                <a href="#">
+                  <li key={index} ref={li => (this.lis[index] = li)}>
+                    {element.li}
+                  </li>
+                </a>
+              ))}
+            </ul>
+            <Logo />
+          </Nav>
+          <Welcome ref={div => (this.welcome = div)}>
+            {this.state.welcomeTxt.map((element, index) => (
+              <div
+                className={`welcome${index}`}
+                key={index}
+                ref={div => (this.welcomeTxt[index] = div)}
+              >
+                {element.word}
+                <br />
+              </div>
             ))}
-          </ul>
-          <Logo />
-        </Nav>
-        <Welcome ref={div => (this.welcome = div)}>
-          {// map through the elements
-          this.state.welcomeTxt.map((element, index) => (
-            <div
-              className={`welcome${index}`}
-              key={index}
-              ref={div => (this.welcomeTxt[index] = div)}
-            >
-              {element.word}
-              <br />
-            </div>
-          ))}
-          <Name ref={div => (this.name = div)}>
-            <NameSvg className="namesvg" />
-          </Name>
-        </Welcome>
+            <Name ref={div => (this.name = div)}>
+              <NameSvg className="namesvg" />
+            </Name>
+          </Welcome>
 
-        <Music ref={div => (this.music = div)}>
-          <ToolTip>
-            pst..could i interest you in some music for your stay?
-            <button className="noThanks">No..thanks</button>
-          </ToolTip>
-          <a href="#" onClick={this.changePlayingState}>
-            {this.state.playing ? (
-              <img
-                src="https://img.icons8.com/material/48/000000/circled-pause.png"
-                key={"pause"}
-              />
-            ) : (
-              <img
-                src="https://img.icons8.com/material-rounded/48/000000/circled-play.png"
-                alt="play button"
-                key={"play"}
-                className="playButton"
-              />
-            )}
-          </a>
-          {this.state.playing ? <Player playing={this.state.playing} /> : null}
-        </Music>
+          <Music
+            ref={div => (this.music = div)}
+            changePlayingState={this.changePlayingState}
+            playing={this.state.playing}
+          />
 
-        <Scroll ref={div => (this.scroll = div)}>
-          <div className="one" />
-          <div className="two" />
-          <div className="three" />
-        </Scroll>
-        <Enter />
-        <Hero ref={div => (this.hero = div)} className="hero" />
-      </Wrapper>
+          <Scroll ref={div => (this.scroll = div)} />
+          <Enter />
+          <Hero ref={div => (this.hero = div)} />
+        </Wrapper>
+
+        <Route exact path="/" />
+        <Route path="/work" render={() => <MyWork />} />
+      </HashRouter>
     );
   }
 }
 
 export default App;
-
-const building = keyframes`
-  0% {
-    left: 0;
-    width:0;
-    opacity:1;
-  } 
-  50%{
-    left:0;
-    width:70%;
-    opacity:.7
-  }
-  100% {
-    left: 70%;
-    width:0;
-    opacity:0;
-  }
-`;
 
 const Wrapper = styled.div`
   display: grid;
@@ -152,14 +120,12 @@ const Nav = styled.div`
   grid-column: 1 / 3;
   grid-row: 1/6;
   font-family: Neou-Bold;
-
   & ul {
     list-style: none;
     padding: 0;
     margin-top: 3em;
     font-size: 1.1em;
   }
-
   & a {
     text-decoration: none;
     color: black;
@@ -195,79 +161,11 @@ const Name = styled.div`
   }
 `;
 
-const Music = styled.div`
-  opacity: 0;
-  grid-column: 11/13;
-  grid-row: 1/2;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 3em;
-  position: relative;
-`;
-
-const ToolTip = styled.div`
-  ${"" /* visibility: hidden; */}
-  position: absolute;
-  height: auto;
-  padding: 0.3em;
-  width: auto;
-  bottom: 5.5em;
-  border: 0.3px solid black;
-  left: -1em;
-`;
-
-const Scroll = styled.div`
-  visibility: hidden;
-  grid-column: 11/13;
-  grid-row: 6/9;
-  display: flex;
-  ${"" /* flex-direction: column; */}
-  justify-content: center;
-
-  & .one {
-    height: 10px;
-    width: 10px;
-    background: black;
-    border-radius: 50%;
-    margin-right: 0.5em;
-  }
-
-  & .two,
-  .three {
-    height: 10px;
-    width: 10px;
-    background: transparent;
-    border: 0.5px solid black;
-    border-radius: 50%;
-    margin-right: 0.5em;
-  }
-`;
-
 const Enter = styled.div`
   opacity: 0;
   background: white;
   grid-column: 11/13;
   grid-row: 9/13;
-`;
-
-const Hero = styled.div`
-  opacity: 0;
-  grid-column: 4/12;
-  grid-row: 1/12;
-  transform: translate(-20%, 20%);
-
-  &:before {
-    content: "";
-    position: absolute;
-    background: rgba(0, 0, 0, 0.9);
-    height: 100%;
-    width: 0%;
-    display: block;
-    animation: ${building} 1s;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-  }
 `;
 
 const Welcome = styled.div`
