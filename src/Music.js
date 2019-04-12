@@ -2,30 +2,38 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import Player from "./Player";
 
-const Music = React.forwardRef((props, ref) => (
-  <MusicB ref={ref}>
-    <ToolTip>
-      pst..could i interest you in some music for your stay?
-      <button className="noThanks">No..thanks</button>
-    </ToolTip>
-    <a href="#" onClick={props.changePlayingState}>
-      {props.playing ? (
-        <img
-          src="https://img.icons8.com/material/48/000000/circled-pause.png"
-          key={"pause"}
-        />
-      ) : (
-        <img
-          src="https://img.icons8.com/material-rounded/48/000000/circled-play.png"
-          alt="play button"
-          key={"play"}
-          className="playButton"
-        />
-      )}
-    </a>
-    {props.playing ? <Player playing={props.playing} /> : null}
-  </MusicB>
-));
+class Music extends Component {
+  hideComponent = () => {
+    alert("imahideu");
+  };
+
+  render() {
+    return (
+      <MusicB ref={this.props.innerRef}>
+        <ToolTip>
+          pst..could i interest you in some music for your stay?
+          <button className="noThanks">No..thanks</button>
+        </ToolTip>
+        <a href="#" onClick={this.props.changePlayingState}>
+          {this.props.playing ? (
+            <img
+              src="https://img.icons8.com/material/48/000000/circled-pause.png"
+              key={"pause"}
+            />
+          ) : (
+            <img
+              src="https://img.icons8.com/material-rounded/48/000000/circled-play.png"
+              alt="play button"
+              key={"play"}
+              className="playButton"
+            />
+          )}
+        </a>
+        {this.props.playing ? <Player playing={this.props.playing} /> : null}
+      </MusicB>
+    );
+  }
+}
 
 const MusicB = styled.div`
   opacity: 0;
@@ -48,4 +56,6 @@ const ToolTip = styled.div`
   left: -1em;
 `;
 
-export default Music;
+export default React.forwardRef((props, ref) => (
+  <Music innerRef={ref} {...props} />
+));

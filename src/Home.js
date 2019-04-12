@@ -5,7 +5,7 @@ import Music from "./Music";
 import Hero from "./Hero";
 import styled, { keyframes } from "styled-components";
 import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
-import { HashRouter, Route } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import MyWork from "./MyWork";
 
 class Home extends Component {
@@ -24,7 +24,10 @@ class Home extends Component {
   };
 
   state = {
-    liText: [{ li: "My Work", id: 1 }, { li: "About Me", id: 2 }],
+    liText: [
+      { li: "My Work", id: 1, to: "/work" },
+      { li: "About Me", id: 2, to: "/about" }
+    ],
     welcomeTxt: [{ word: "Hello", id: 1 }, { word: "I'm", id: 2 }],
     playing: false
   };
@@ -55,11 +58,11 @@ class Home extends Component {
           Logo
           <ul>
             {this.state.liText.map((element, index) => (
-              <a href="#">
+              <NavLink to={this.state.liText[index].to}>
                 <li key={index} ref={li => (this.lis[index] = li)}>
                   {element.li}
                 </li>
-              </a>
+              </NavLink>
             ))}
           </ul>
           <Logo />

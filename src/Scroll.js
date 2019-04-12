@@ -10,16 +10,18 @@ const Scroll = React.forwardRef((props, ref) => (
     <NavLink to="/work" title="My Work">
       <div className="two" />
     </NavLink>
-    <div className="three" />
+    <NavLink to="/about" title="About Me">
+      <div className="three" />
+    </NavLink>
   </ScrollSpy>
 ));
 
 const ScrollSpy = styled.div`
-  visibility: hidden;
-  grid-column: 11/13;
-  grid-row: 6/9;
+  ${"" /* visibility: hidden; */}
+  position:absolute;
+  top: 50%;
+  right: 4%;
   display: flex;
-  ${"" /* flex-direction: column; */}
   justify-content: center;
   & .one,
   .two,
