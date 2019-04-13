@@ -23,13 +23,18 @@ class Home extends Component {
     this.setState({ playing: !this.state.playing });
   };
 
+  hideMusicMessage = () => {
+    this.setState({ showMusicMessage: false });
+  };
+
   state = {
     liText: [
       { li: "My Work", id: 1, to: "/work" },
       { li: "About Me", id: 2, to: "/about" }
     ],
     welcomeTxt: [{ word: "Hello", id: 1 }, { word: "I'm", id: 2 }],
-    playing: false
+    playing: false,
+    showMusicMessage: true
   };
 
   componentDidMount() {
@@ -87,6 +92,8 @@ class Home extends Component {
           ref={div => (this.music = div)}
           changePlayingState={this.changePlayingState}
           playing={this.state.playing}
+          showMusicMessage={this.state.showMusicMessage}
+          hideMusicMessage={this.hideMusicMessage}
         />
 
         <Scroll ref={div => (this.scroll = div)} />

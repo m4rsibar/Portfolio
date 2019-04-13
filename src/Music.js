@@ -10,10 +10,15 @@ class Music extends Component {
   render() {
     return (
       <MusicB ref={this.props.innerRef}>
-        <ToolTip>
-          pst..could i interest you in some music for your stay?
-          <button className="noThanks">No..thanks</button>
-        </ToolTip>
+        {this.props.showMusicMessage ? (
+          <ToolTip>
+            pst..could i interest you in some music for your stay?
+            <button onClick={this.props.hideMusicMessage} className="noThanks">
+              No..thanks
+            </button>
+          </ToolTip>
+        ) : null}
+
         <a href="#" onClick={this.props.changePlayingState}>
           {this.props.playing ? (
             <img
