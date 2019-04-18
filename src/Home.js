@@ -6,7 +6,6 @@ import Hero from "./Hero";
 import styled, { keyframes } from "styled-components";
 import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
 import { NavLink, Link } from "react-router-dom";
-import MyWork from "./MyWork";
 
 class Home extends Component {
   nav = null;
