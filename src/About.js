@@ -27,20 +27,25 @@ class About extends Component {
     console.log(this.card0);
   }
 
-  beginAnimation = () => {
+  slideUp = () => {
     switch (this.flag) {
       case 0:
         this.tl
-          .to(this.card0.current, 1.8, { y: "-100%" }, 0.9)
-          .to(this.card1.current, 1.8, { y: "-100%" }, 0.9);
+          .to(this.card0.current.firstChild, 1, { y: "-100%" }, "firstSlide")
+          .to(this.card0.current.lastChild, 1.8, { y: "-100%" }, "firstSlide")
+          .to(this.card1.current.firstChild, 1, { y: "-100%" }, "firstSlide")
+          .to(this.card1.current.lastChild, 1, { y: "-100%" }, "firstSlide")
+          .to(this.card2.current, 1, { y: "-100%" }, "firstSlide");
 
         this.flag += 1;
         this.tl.play();
         break;
       case 1:
         this.tl
-          .to(this.card1.current, 1.8, { y: "-200%" }, "slidetwo")
-          .to(this.card2.current, 1.8, { y: "-100%", zIndex: 2 }, "slidetwo");
+          .to(this.card1.current.firstChild, 1, { y: "-200%" }, "secondSlide")
+          .to(this.card1.current.lastChild, 1.8, { y: "-200%" }, "secondSlide")
+          .to(this.card2.current.firstChild, 1, { y: "-100%" }, "secondSlide")
+          .to(this.card2.current.lastChild, 1, { y: "-100%" }, "secondSlide");
         this.tl.play();
         break;
     }
@@ -62,7 +67,7 @@ class About extends Component {
         card={card}
         info={this.state.aboutCards}
         ref={{ ref1: this["card" + i], ref2: this.button }}
-        beginAnimation={this.beginAnimation}
+        slideUp={this.slideUp}
       />
     );
   }

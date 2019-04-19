@@ -20,7 +20,7 @@ export default React.forwardRef((props, ref) => {
           className="pn-btn"
           id="prev"
           ref={ref.ref2}
-          onClick={() => props.beginAnimation()}
+          onClick={() => props.slideUp()}
         />
         <button className="pn-btn" id="next" />
       </div>

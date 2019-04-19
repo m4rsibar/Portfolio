@@ -20,7 +20,7 @@ body {
 
 * {
   box-sizing: border-box;
-  // font-family: Neou;
+  font-family: Neou;
 }
 
 svg {
@@ -173,12 +173,6 @@ path {
   height: 100%;
   display: flex;
   background: #fff;
-}
-
-.number2 {
-  position: absolute;
-  top: 100%;
-  z-index: -1;
 }
 
 .card-content {
