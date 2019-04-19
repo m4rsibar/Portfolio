@@ -11,6 +11,7 @@ class About extends Component {
     this.card0 = React.createRef();
     this.card1 = React.createRef();
     this.card2 = React.createRef();
+    this.button = React.createRef();
     this.flag = 0;
   }
 
@@ -23,26 +24,27 @@ class About extends Component {
   };
 
   componentDidMount() {
-    if (this.flag === 0) {
-      this.tl
-        .to(
-          this.card0.current,
-          1.8,
-          {
-            y: "-100%"
-          },
-          0.9
-        )
-        .to(this.card1.current, 1.8, { y: "-100%" }, 0.9)
-        .to(this.card1.current, 1.8, { y: "-200%" }, 0.9)
-
-        .to(this.card2.current, 1.8, { y: "-200%" }, 0.9);
-
-      this.tl.play();
-      this.flag += 1;
-      console.log(this.flag);
-    }
+    console.log(this.card0);
   }
+
+  beginAnimation = () => {
+    switch (this.flag) {
+      case 0:
+        this.tl
+          .to(this.card0.current, 1.8, { y: "-100%" }, 0.9)
+          .to(this.card1.current, 1.8, { y: "-100%" }, 0.9);
+
+        this.flag += 1;
+        this.tl.play();
+        break;
+      case 1:
+        this.tl
+          .to(this.card1.current, 1.8, { y: "-200%" }, "slidetwo")
+          .to(this.card2.current, 1.8, { y: "-100%", zIndex: 2 }, "slidetwo");
+        this.tl.play();
+        break;
+    }
+  };
 
   render() {
     return (
@@ -59,7 +61,8 @@ class About extends Component {
         key={i}
         card={card}
         info={this.state.aboutCards}
-        ref={this["card" + i]}
+        ref={{ ref1: this["card" + i], ref2: this.button }}
+        beginAnimation={this.beginAnimation}
       />
     );
   }
