@@ -22,7 +22,11 @@ export default React.forwardRef((props, ref) => {
           ref={ref.ref2}
           onClick={() => props.slideUp()}
         />
-        <button className="pn-btn" id="next" />
+        <button
+          className="pn-btn"
+          id="next"
+          onClick={() => props.slideDown()}
+        />
       </div>
     </div>
   );

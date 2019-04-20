@@ -8,6 +8,8 @@ class About extends Component {
     super(props);
     this.createCards = this.createCards.bind(this);
     this.tl = new TimelineLite({ paused: true });
+    this.tl2 = new TimelineLite({ paused: true });
+
     this.card0 = React.createRef();
     this.card1 = React.createRef();
     this.card2 = React.createRef();
@@ -23,10 +25,6 @@ class About extends Component {
     ]
   };
 
-  componentDidMount() {
-    console.log(this.card0);
-  }
-
   slideUp = () => {
     switch (this.flag) {
       case 0:
@@ -36,18 +34,42 @@ class About extends Component {
           .to(this.card1.current.firstChild, 1, { y: "-100%" }, "firstSlide")
           .to(this.card1.current.lastChild, 1, { y: "-100%" }, "firstSlide")
           .to(this.card2.current, 1, { y: "-100%" }, "firstSlide");
-
-        this.flag += 1;
+        this.flag = 1;
         this.tl.play();
         break;
       case 1:
-        this.tl
+        this.tl2
           .to(this.card1.current.firstChild, 1, { y: "-200%" }, "secondSlide")
           .to(this.card1.current.lastChild, 1.8, { y: "-200%" }, "secondSlide")
           .to(this.card2.current.firstChild, 1, { y: "-100%" }, "secondSlide")
           .to(this.card2.current.lastChild, 1, { y: "-100%" }, "secondSlide");
-        this.tl.play();
+        this.flag = 2;
+        console.log(this.flag);
+        this.tl2.play();
         break;
+    }
+  };
+
+  slideDown = () => {
+    switch (this.flag) {
+      case 1:
+        this.flag = 0;
+        this.tl.reverse();
+        console.log(this.flag);
+        break;
+      case 2:
+        this.flag = 1;
+        this.tl2.reverse();
+        console.log(this.flag);
+        break;
+      // case 1:
+      //   this.tl
+      //     .to(this.card1.current.firstChild, 1, { y: "200%" }, "secondSlide")
+      //     .to(this.card1.current.lastChild, 1.8, { y: "200%" }, "secondSlide")
+      //     .to(this.card2.current.firstChild, 1, { y: "100%" }, "secondSlide")
+      //     .to(this.card2.current.lastChild, 1, { y: "100%" }, "secondSlide");
+      //   this.tl.play();
+      //   break;
     }
   };
 
@@ -68,6 +90,7 @@ class About extends Component {
         info={this.state.aboutCards}
         ref={{ ref1: this["card" + i], ref2: this.button }}
         slideUp={this.slideUp}
+        slideDown={this.slideDown}
       />
     );
   }
