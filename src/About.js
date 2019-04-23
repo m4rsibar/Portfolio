@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { TweenMax, TweenLite, TimelineLite } from "gsap";
+import { TimelineLite } from "gsap";
 import styled from "styled-components";
 
 class About extends Component {
   constructor(props) {
     super(props);
     this.createCards = this.createCards.bind(this);
-    this.tl = new TimelineLite({ paused: true });
+    this.tl = new TimelineLite({});
+
     this.card0 = React.createRef();
     this.card1 = React.createRef();
     this.card2 = React.createRef();
@@ -24,41 +25,51 @@ class About extends Component {
   };
 
   slideUp = () => {
-    switch (this.flag) {
-      case 0:
-        this.tl
-          .to(this.card0.current.firstChild, 1, { y: "-100%" }, "firstSlide")
-          .to(this.card0.current.lastChild, 1.8, { y: "-100%" }, "firstSlide")
-          .to(this.card1.current.firstChild, 1, { y: "-100%" }, "firstSlide")
-          .to(this.card1.current.lastChild, 1, { y: "-100%" }, "firstSlide")
-          .to(this.card2.current, 1, { y: "-100%" }, "firstSlide");
-        this.tl.play();
-        this.flag += 1;
-
-        break;
-      case 1:
-        this.tl
-          .to(this.card1.current.firstChild, 1, { y: "-200%" }, "secondSlide")
-          .to(this.card1.current.lastChild, 1.8, { y: "-200%" }, "secondSlide")
-          .to(this.card2.current.firstChild, 1, { y: "-100%" }, "secondSlide")
-          .to(this.card2.current.lastChild, 1, { y: "-100%" }, "secondSlide");
-        this.flag += 1;
-        this.tl.play();
-        break;
+    this.flag++;
+    if (this.flag === this.state.aboutCards.length) {
+      this.flag--;
+      return;
     }
+    var oldCard = this["card" + (this.flag - 1)].current,
+      newCard = this["card" + this.flag].current,
+      newPercent = -100 * this.flag;
+    if (!this.tl.isActive()) {
+      this.tl.clear().seek(0);
+    }
+    this.tl
+      .to(oldCard.firstChild, 1, { yPercent: newPercent })
+      .to(oldCard.lastChild, 1, { yPercent: newPercent }, "-=1")
+      .fromTo(
+        [newCard.firstChild, newCard.lastChild],
+        1,
+        { yPercent: newPercent + 100 },
+        { yPercent: newPercent },
+        "-=1"
+      );
   };
 
   slideDown = () => {
-    switch (this.flag) {
-      case 1:
-        this.flag -= 1;
-        this.tl.reverse();
-        break;
-      case 2:
-        this.flag -= 1;
-        this.tl.reverse();
-        break;
+    this.flag--;
+    if (this.flag < 0) {
+      this.flag = 0;
+      return;
     }
+    var oldCard = this["card" + (this.flag + 1)].current,
+      newCard = this["card" + this.flag].current,
+      newPercent = -100 * this.flag;
+    if (!this.tl.isActive()) {
+      this.tl.clear().seek(0);
+    }
+    this.tl
+      .to(oldCard.firstChild, 1, { yPercent: newPercent })
+      .to(oldCard.lastChild, 1, { yPercent: newPercent }, "-=1")
+      .fromTo(
+        [newCard.firstChild, newCard.lastChild],
+        1,
+        { yPercent: newPercent - 100 },
+        { yPercent: newPercent },
+        "-=1"
+      );
   };
 
   render() {
