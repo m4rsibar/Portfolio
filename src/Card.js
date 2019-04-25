@@ -9,10 +9,8 @@ export default React.forwardRef((props, ref) => {
         <div className="card-content">
           <p className="card-theme">{props.card.theme}</p>
           <h2 className="card-header">{props.card.header}</h2>
-          <p className="card-para"> lorem lorem</p>
-          <a className="card-link" href="#">
-            Read
-          </a>
+          <p className="card-para"> {props.card.info}</p>
+          <p className="card-para"> {props.card.info2}</p>
         </div>
       </div>
       <div className="prevnext">

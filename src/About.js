@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { TimelineLite } from "gsap";
+import { TimelineLite, Power3 } from "gsap";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 class About extends Component {
@@ -18,8 +20,22 @@ class About extends Component {
 
   state = {
     aboutCards: [
-      { id: "img01", theme: "one ", header: "testing...1" },
-      { id: "img02", theme: "two", header: "testing..2" },
+      {
+        id: "img01",
+        theme: "one ",
+        header: "Technology",
+        info:
+          "I'm interested in animation and making websites come alive. Right now I primarily work with React. I pay close attention to detail and I think good design is crucial. I attend Code Louisville(a program designed to teach software development) the next course I'll be attending is C#",
+        info2:
+          "I'm interested in learning, and building.  I'm not only interested in software, but hardware too."
+      },
+      {
+        id: "img02",
+        theme: "two",
+        header: "A Little About me",
+        info:
+          "I always try to enjoy the simple things in life.  I practice minimalism it reminds me that possessions are easy to replace and things are only that...things.  Minimalism helps me to focus on experiences and making memories. It helps me to be create if I'm organized. One of my most prized posessions is my bicycle, its a 1986 raleigh fixed gear bicycle. Repairing and maintaining my bicycle brings me joy. I have many interests, and they're forever growing."
+      },
       { id: "img03", theme: "three", header: "testing..3" }
     ]
   };
@@ -37,14 +53,14 @@ class About extends Component {
       this.tl.clear().seek(0);
     }
     this.tl
-      .to(oldCard.firstChild, 1, { yPercent: newPercent })
-      .to(oldCard.lastChild, 1, { yPercent: newPercent }, "-=1")
+      .to(oldCard.firstChild, 0.65, { yPercent: newPercent })
+      .to(oldCard.lastChild, 0.65, { yPercent: newPercent }, "-=.65")
       .fromTo(
         [newCard.firstChild, newCard.lastChild],
-        1,
+        0.65,
         { yPercent: newPercent + 100 },
         { yPercent: newPercent },
-        "-=1"
+        "-=.65"
       );
   };
 
@@ -61,20 +77,27 @@ class About extends Component {
       this.tl.clear().seek(0);
     }
     this.tl
-      .to(oldCard.firstChild, 1, { yPercent: newPercent })
-      .to(oldCard.lastChild, 1, { yPercent: newPercent }, "-=1")
+
+      .to(oldCard.firstChild, 0.65, { yPercent: newPercent })
+      .to(oldCard.lastChild, 0.65, { yPercent: newPercent }, "-=.65")
       .fromTo(
         [newCard.firstChild, newCard.lastChild],
-        1,
+        0.65,
         { yPercent: newPercent - 100 },
         { yPercent: newPercent },
-        "-=1"
+        "-=.65"
       );
   };
 
   render() {
     return (
       <Wrapper className="cardWrapper">
+        <Link to="/">
+          <img
+            className="home"
+            src="https://img.icons8.com/ios/30/000000/home-page.png"
+          />
+        </Link>
         {this.state.aboutCards.map(this.createCards)}
       </Wrapper>
     );

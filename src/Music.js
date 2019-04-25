@@ -31,6 +31,7 @@ class Music extends Component {
               alt="play button"
               key={"play"}
               className="playButton"
+              onClick={this.props.hideMusicMessage}
             />
           )}
         </a>
