@@ -5,12 +5,12 @@ import Home from "./Home";
 import MyWork from "./MyWork";
 import Scroll from "./Scroll";
 import About from "./About";
+import Music from "./Music";
 
 class App extends Component {
   render() {
     return (
       <HashRouter>
-        <Route path="/" component={Scroll} />
         <Route exact path="/" component={Home} />
         <Route path="/work" component={MyWork} />
         <Route path="/about" component={About} />

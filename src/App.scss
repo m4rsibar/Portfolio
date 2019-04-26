@@ -170,6 +170,11 @@ path {
   margin-top: 0.5em;
   margin-left: 0.5em;
   padding: 0;
+  transition: 0.5s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .slide {

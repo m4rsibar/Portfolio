@@ -69,9 +69,9 @@ class Home extends Component {
         .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
         .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
-        .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2")
+        .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
 
-        .progress(1, false);
+      this.tl.play().progress(1, false);
     }
   }
 

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import Player from "./Player";
+import soundfile from "./sly.mp3";
 
 class Music extends Component {
-  hideComponent = () => {
-    alert("imahideu");
-  };
-
   render() {
     return (
       <MusicB ref={this.props.innerRef}>
+        {this.props.playing ? (
+          <audio ref={this.sound} src={soundfile} autoPlay />
+        ) : null}
         {this.props.showMusicMessage ? (
           <ToolTip>
             pst..could i interest you in some music for your stay?
@@ -42,7 +42,7 @@ class Music extends Component {
 }
 
 const MusicB = styled.div`
-  opacity: 0;
+  ${"" /* opacity: 0; */}
   grid-column: 11/13;
   grid-row: 1/2;
   display: flex;
