@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
-
 const Hero = React.forwardRef((props, ref) => (
   <HeroStyled ref={ref} className="hero" />
 ));

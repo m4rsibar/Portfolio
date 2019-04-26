@@ -18,14 +18,6 @@ class Home extends Component {
   lis = [];
   welcomeTxt = [];
 
-  changePlayingState = () => {
-    this.setState({ playing: !this.state.playing });
-  };
-
-  hideMusicMessage = () => {
-    this.setState({ showMusicMessage: false });
-  };
-
   state = {
     liText: [
       { li: "My Work", id: 1, to: "/work" },
@@ -50,7 +42,7 @@ class Home extends Component {
         .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
         .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
-        .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
+        // .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
 
       this.tl.play();
@@ -68,9 +60,8 @@ class Home extends Component {
         .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
         .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
-        .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
+        // .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
-
       this.tl.play().progress(1, false);
     }
   }
@@ -113,15 +104,13 @@ class Home extends Component {
             <NameSvg className="namesvg" />
           </Name>
         </Welcome>
-
-        <Music
+        {/* <Music
           ref={div => (this.music = div)}
           changePlayingState={this.changePlayingState}
           playing={this.state.playing}
           showMusicMessage={this.state.showMusicMessage}
           hideMusicMessage={this.hideMusicMessage}
-        />
-
+        /> */}
         <Scroll ref={div => (this.scroll = div)} />
         <Enter />
         <Hero ref={div => (this.hero = div)} />

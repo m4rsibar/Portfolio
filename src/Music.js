@@ -4,23 +4,36 @@ import Player from "./Player";
 import soundfile from "./sly.mp3";
 
 class Music extends Component {
+  state = {
+    playing: false,
+    showMusicMessage: true
+  };
+
+  changePlayingState = () => {
+    this.setState({ playing: !this.state.playing });
+  };
+
+  hideMusicMessage = () => {
+    this.setState({ showMusicMessage: false });
+  };
+
   render() {
     return (
       <MusicB ref={this.props.innerRef}>
-        {this.props.playing ? (
+        {this.state.playing ? (
           <audio ref={this.sound} src={soundfile} autoPlay />
         ) : null}
-        {this.props.showMusicMessage ? (
+        {this.state.showMusicMessage ? (
           <ToolTip>
             pst..could i interest you in some music for your stay?
-            <button onClick={this.props.hideMusicMessage} className="noThanks">
+            <button onClick={this.hideMusicMessage} className="noThanks">
               No..thanks
             </button>
           </ToolTip>
         ) : null}
 
-        <a href="#" onClick={this.props.changePlayingState}>
-          {this.props.playing ? (
+        <a onClick={this.changePlayingState}>
+          {this.state.playing ? (
             <img
               src="https://img.icons8.com/material/48/000000/circled-pause.png"
               key={"pause"}
@@ -31,35 +44,37 @@ class Music extends Component {
               alt="play button"
               key={"play"}
               className="playButton"
-              onClick={this.props.hideMusicMessage}
+              onClick={this.hideMusicMessage}
             />
           )}
         </a>
-        {this.props.playing ? <Player playing={this.props.playing} /> : null}
+        {this.state.playing ? <Player playing={this.state.playing} /> : null}
       </MusicB>
     );
   }
 }
 
 const MusicB = styled.div`
-  ${"" /* opacity: 0; */}
-  grid-column: 11/13;
+  ${"" /* grid-column: 11/13;
   grid-row: 1/2;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 3em;
-  position: relative;
+  margin-top: 3em; */}
+  right: 4em;
+  top: 5em;
+  z-index: 999999;
+  position: absolute;
 `;
 
 const ToolTip = styled.div`
   position: absolute;
   height: auto;
   padding: 0.3em;
-  width: auto;
-  bottom: 5.5em;
+  width: 200px;
   border: 0.3px solid black;
-  left: -1em;
+  top: 5em;
+  right: 0;
 `;
 
 export default React.forwardRef((props, ref) => (
