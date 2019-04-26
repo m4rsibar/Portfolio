@@ -79,7 +79,11 @@ class Home extends Component {
     return (
       <Wrapper ref={div => (this.wrapper = div)}>
         <Nav ref={div => (this.nav = div)}>
-          Logo
+          <div className="logo">
+            <span className="m">M</span>
+            <br />
+            <span className="s">S</span>
+          </div>
           <ul>
             {this.state.liText.map((element, index) => (
               <NavLink to={this.state.liText[index].to}>
@@ -93,7 +97,6 @@ class Home extends Component {
               </NavLink>
             ))}
           </ul>
-          <Logo />
         </Nav>
         <Welcome ref={div => (this.welcome = div)}>
           {this.state.welcomeTxt.map((element, index) => (

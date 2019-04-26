@@ -49,6 +49,30 @@ path {
   }
 }
 
+.logo {
+  height: 70px;
+  width: 70px;
+  margin-left: 2em;
+  background-color: #a1d6e3;
+  border-radius: 50px;
+  position: relative;
+}
+
+.m {
+  color: white;
+  position: absolute;
+  top: 10%;
+  right: 44%;
+  font-size: 2em;
+}
+.s {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 30%;
+  font-size: 2em;
+}
+
 @keyframes animate {
   0% {
     opacity: 0;
