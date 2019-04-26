@@ -73,7 +73,7 @@ const ToolTip = styled.div`
   padding: 0.3em;
   width: 200px;
   border: 0.3px solid black;
-  top: 5em;
+  top: 3.5em;
   right: 0;
 `;
 
