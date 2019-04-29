@@ -104,13 +104,7 @@ class Home extends Component {
             <NameSvg className="namesvg" />
           </Name>
         </Welcome>
-        {/* <Music
-          ref={div => (this.music = div)}
-          changePlayingState={this.changePlayingState}
-          playing={this.state.playing}
-          showMusicMessage={this.state.showMusicMessage}
-          hideMusicMessage={this.hideMusicMessage}
-        /> */}
+
         <Scroll ref={div => (this.scroll = div)} />
         <Enter />
         <Hero ref={div => (this.hero = div)} />
@@ -154,20 +148,6 @@ const Nav = styled.div`
     padding-bottom: 0.5em;
   }
 `;
-
-const Logo = styled.div``;
-
-const appear = keyframes`
-    0% {
-      opacity:0
-    } 
-    50%{
-      opacity:.7
-    }
-    100% {
-      opacity:1;
-    }
-  `;
 
 const Name = styled.div`
     position:absolute;

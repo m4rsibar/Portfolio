@@ -164,6 +164,19 @@ path {
   animation: pulse ease-in-out 5s infinite;
 }
 
+.contactForm {
+  height: 400px;
+  width: 350px;
+  background-color: rgba(179, 220, 237, 1);
+  box-shadow: 5px 5px 20px rgba(#cbcdd3, 10%);
+  border-radius: 20px;
+  position: relative;
+  top: 5em;
+  left: 50%;
+  transform: translateX(-50%);
+  vertical-align: bottom;
+}
+
 .container {
   grid-column: 11/13;
   grid-row: 1/2;
@@ -184,7 +197,7 @@ path {
     span {
       display: block;
       height: 0;
-      background: white;
+      background: transparent;
       border: 0.3px solid black;
       margin: 0 4px;
       width: 5px;

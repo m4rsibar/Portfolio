@@ -69,11 +69,12 @@ const MusicB = styled.div`
 
 const ToolTip = styled.div`
   position: absolute;
+  font-size: 0.7em;
   height: auto;
   padding: 0.3em;
   width: 200px;
   border: 0.3px solid black;
-  top: 3.5em;
+  top: 5.5em;
   right: 0;
 `;
 

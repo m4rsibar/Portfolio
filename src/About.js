@@ -35,9 +35,23 @@ class About extends Component {
         theme: "two",
         header: "A Little About me",
         info:
-          "I'm in the process of finding myself. I always try to enjoy the simple things in life.  I practice minimalism it reminds me that possessions are easy to replace and things are only ...things.  Minimalism helps me to focus on experiences. It helps me to create if I'm organized. I'm not on social media, and haven't been for over a year, I abstain from social media to allot time for what's important and to improve my focus. One of my most prized posessions is my bicycle, its a 1986 raleigh fixed gear bicycle. Repairing and maintaining my bicycle brings me joy. I have many niche interests, and they're forever growing."
+          "I'm in the process of finding myself. I always try to enjoy the simple things in life.  I practice minimalism it reminds me that possessions are easy to replace and things are only ...things.  Minimalism helps me to focus on experiences. It helps me to create if I'm organized. I'm not on social media, and haven't been for over a year, I abstain from social media to allot time for what's important and to improve my focus. I have many niche interests, and they're forever growing."
       },
-      { id: "img03", theme: "three", header: "Nothing here yet..." }
+      {
+        id: "img03",
+        theme: "three",
+        header: "Contact Me",
+        info: <a href="#"> Github </a>,
+        info: (
+          <form className="contactForm">
+            <span className="contactText1">Send me a message!</span>
+            <br />
+            <span className="contactText1">Let's build something</span>
+            <br />
+            <input type="Text" />
+          </form>
+        )
+      }
     ]
   };
 
