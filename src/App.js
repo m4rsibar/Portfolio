@@ -6,12 +6,24 @@ import MyWork from "./MyWork";
 import About from "./About";
 import Music from "./Music";
 import Scroll from "./Scroll";
+import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
 
 class App extends Component {
+  music = null;
+  tl = new TimelineLite({ paused: true });
+
+  componentDidMount() {
+    this.tl.to(this.music, 1, { opacity: 1 }, 0.8);
+    this.tl.play();
+  }
+
   render() {
     return (
       <HashRouter>
-        <Route path="/" render={() => <Music />} />
+        <Route
+          path="/"
+          render={() => <Music ref={div => (this.music = div)} />}
+        />
         <Route path="/" render={() => <Scroll />} />
         <Route exact path="/" render={() => <Home />} />
         <Route path="/work" component={MyWork} />

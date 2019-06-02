@@ -17,6 +17,12 @@ class Music extends Component {
     this.setState({ showMusicMessage: false });
   };
 
+  logEnd = () => {
+    if (!this.sound.paused || !this.sound.currentTime) {
+      console.log("end");
+    }
+  };
+
   render() {
     return (
       <MusicB ref={this.props.innerRef}>
@@ -55,16 +61,11 @@ class Music extends Component {
 }
 
 const MusicB = styled.div`
-  ${"" /* grid-column: 11/13;
-  grid-row: 1/2;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 3em; */}
   right: 4em;
   top: 5em;
   z-index: 999999;
   position: absolute;
+  opacity: 0;
 `;
 
 const ToolTip = styled.div`

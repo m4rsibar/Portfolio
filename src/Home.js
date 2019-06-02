@@ -14,6 +14,7 @@ class Home extends Component {
   wrapper = null;
   scroll = null;
   name = null;
+  music = null;
   tl = new TimelineLite({ paused: true });
   lis = [];
   welcomeTxt = [];
