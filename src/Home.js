@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import styled, { keyframes } from "styled-components";
 import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
 import { NavLink, Link } from "react-router-dom";
+import Logo from "./Logo";
 
 class Home extends Component {
   nav = null;
@@ -43,7 +44,6 @@ class Home extends Component {
         .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
         .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
-        // .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
 
       this.tl.play();
@@ -61,7 +61,6 @@ class Home extends Component {
         .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
         .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
-        // .to(this.music, 0.9, { opacity: 1 }, "prev+=2")
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
       this.tl.play().progress(1, false);
     }
@@ -71,11 +70,7 @@ class Home extends Component {
     return (
       <Wrapper ref={div => (this.wrapper = div)}>
         <Nav ref={div => (this.nav = div)}>
-          <div className="logo">
-            <span className="m">M</span>
-            <br />
-            <span className="s">S</span>
-          </div>
+          <Logo />
           <ul>
             {this.state.liText.map((element, index) => (
               <NavLink to={this.state.liText[index].to}>
