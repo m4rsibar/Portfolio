@@ -42,15 +42,7 @@ class About extends Component {
         theme: "three",
         header: "Contact Me",
         info: <a href="#"> Github </a>,
-        info: (
-          <form className="contactForm">
-            <span className="contactText1">Send me a message!</span>
-            <br />
-            <span className="contactText1">Let's build something</span>
-            <br />
-            <input type="Text" />
-          </form>
-        )
+        info: "coming soon"
       }
     ]
   };
