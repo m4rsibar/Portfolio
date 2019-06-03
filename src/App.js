@@ -13,7 +13,7 @@ class App extends Component {
   tl = new TimelineLite({ paused: true });
 
   componentDidMount() {
-    this.tl.to(this.music, 1, { opacity: 1 }, 0.8);
+    this.tl.to(this.music, 1, { opacity: 1 }, 4);
     this.tl.play();
   }
 

@@ -4,7 +4,7 @@ import Scroll from "./Scroll";
 import Music from "./Music";
 import Hero from "./Hero";
 import styled, { keyframes } from "styled-components";
-import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
+import { TweenMax, TweenLite, Power1, Power2, TimelineLite } from "gsap";
 import { NavLink, Link } from "react-router-dom";
 import Logo from "./Logo";
 
@@ -33,21 +33,26 @@ class Home extends Component {
   componentDidMount() {
     if (!sessionStorage.getItem("welcomePlayed")) {
       this.tl
-        .staggerTo(this.welcomeTxt, 0.9, { opacity: 1, y: 70 }, 0.1)
+        .staggerTo(this.welcomeTxt, 0.6, { opacity: 1, y: 70 }, 0.1)
         .staggerTo(
           this.welcomeTxt,
           0.9,
           { visibility: "visible", opacity: 0, delay: 0.5 },
           "prev"
         )
-        .to(this.name, 0.9, { y: 350, x: -400 }, "prev+=.5")
-        .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
-        .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
-        .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
+        .to(this.name, 0.9, { y: 350, x: -400 }, "prev+=.1")
+        .to(this.hero, 0.8, { opacity: 1, ease: Power2.easeIn }, "prev+=.1")
+        .to(this.nav, 0.3, { opacity: 1 }, "prev+=.1")
+        .staggerTo(
+          this.lis,
+          0.2,
+          { opacity: 1, x: 20, ease: Power1.easeIn },
+          0.1
+        )
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
 
       this.tl.play();
-      sessionStorage.setItem("welcomePlayed", "yep");
+      // sessionStorage.setItem("welcomePlayed", "yep");
     } else {
       this.tl
         .staggerTo(this.welcomeTxt, 0.9, { opacity: 1, y: 70 }, 0.1)
