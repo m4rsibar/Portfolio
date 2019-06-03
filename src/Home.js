@@ -52,7 +52,7 @@ class Home extends Component {
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
 
       this.tl.play();
-      // sessionStorage.setItem("welcomePlayed", "yep");
+      sessionStorage.setItem("welcomePlayed", "yep");
     } else {
       this.tl
         .staggerTo(this.welcomeTxt, 0.9, { opacity: 1, y: 70 }, 0.1)
