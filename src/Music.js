@@ -75,8 +75,10 @@ const ToolTip = styled.div`
   padding: 0.3em;
   width: 200px;
   border: 0.3px solid black;
+  border-radius: 10px;
   top: 5.5em;
   right: 0;
+  padding-bottom: 0.2em;
 `;
 
 export default React.forwardRef((props, ref) => (

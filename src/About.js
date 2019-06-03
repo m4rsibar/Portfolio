@@ -26,7 +26,7 @@ class About extends Component {
         theme: "one ",
         header: "Technology",
         info:
-          "I'm interested in animation and making websites come alive. Right now I primarily work with React. I pay close attention to detail and I think good design is crucial. I attend Code Louisville(a program designed to teach software development) the next course I'll be attending is C#",
+          "I'm interested in animation and making websites come alive. I primarily work with React. I pay close attention to detail and I think good design is crucial. I attend Code Louisville(a program designed to teach software development) the next course I'll be attending is C#",
         info2:
           "I'm interested in learning, and building.  I'm not only interested in software, but hardware too."
       },
