@@ -23,7 +23,8 @@ class Home extends Component {
   state = {
     liText: [
       { li: "My Work", id: 1, to: "/work" },
-      { li: "About Me", id: 2, to: "/about" }
+      { li: "About Me", id: 2, to: "/about" },
+      { li: "Contact Me", id: 2, to: "/about#contact" }
     ],
     welcomeTxt: [{ word: "Hello", id: 1 }, { word: "I'm", id: 2 }],
     playing: false,
@@ -55,7 +56,7 @@ class Home extends Component {
       sessionStorage.setItem("welcomePlayed", "yep");
     } else {
       this.tl
-        .staggerTo(this.welcomeTxt, 0.9, { opacity: 1, y: 70 }, 0.1)
+        .staggerTo(this.welcomeTxt, 0, { opacity: 1, y: 70 }, 0.1)
         .staggerTo(
           this.welcomeTxt,
           0.9,
@@ -64,7 +65,7 @@ class Home extends Component {
         )
         .to(this.name, 0.9, { y: 350, x: -400 }, "prev+=.5")
         .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
-        .to(this.hero, 0.9, { opacity: 1 }, "p rev+=.9")
+        .to(this.hero, 0.9, { opacity: 1 }, "prev+=.9")
         .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
         .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
       this.tl.play().progress(1, false);

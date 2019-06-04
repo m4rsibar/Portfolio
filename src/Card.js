@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { TweenMax, TweenLite, TimelineLite } from "gsap";
 
 export default React.forwardRef((props, ref) => {
   return (
@@ -7,9 +6,8 @@ export default React.forwardRef((props, ref) => {
       <div className={`number${props.id} card`} ref={ref.ref1}>
         <div className={`${props.card.id} card-img`} />
         <div className="card-content">
-          <p className="card-theme">{props.card.theme}</p>
           <h2 className="card-header">{props.card.header}</h2>
-          <p className="card-para"> {props.card.info}</p>
+          <div className="card-para"> {props.card.info}</div>
           <p className="card-para"> {props.card.info2}</p>
         </div>
       </div>

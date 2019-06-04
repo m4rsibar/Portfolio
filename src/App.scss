@@ -234,7 +234,7 @@ path {
   font-size: 54px;
   text-transform: capitalize;
   line-height: 1;
-  margin: 3vmin 0 3.5vmin;
+  margin: 1em 0 1em;
   color: black;
   font-family: "Poppins";
 }
@@ -313,4 +313,261 @@ path {
 
 #next:after {
   content: "↓";
+}
+
+//form
+$gray: #8e9aaf;
+$paleblue: #a0d4db;
+$white: #f6f6f6;
+
+$darkerblue: darken($paleblue, 20%);
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
+
+$sans-serif: "Open Sans", sans-serif;
+$serif: "Lora", serif;
+
+.message {
+  background: $paleblue;
+  border-color: white;
+  text-align: left;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* div box styling */
+.form-container {
+  margin: auto;
+  width: 350px;
+  height: auto;
+  left: -100%;
+  position: relative;
+}
+
+.welcome {
+  background: $white;
+  width: 650px;
+  height: 415px;
+  position: absolute;
+  top: 25%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bluebox {
+  position: absolute;
+  top: -10%;
+  right: 5%;
+  background: $paleblue;
+  width: 320px;
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.nodisplay {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+.leftbox,
+.rightbox {
+  position: absolute;
+  width: 50%;
+  transition: 1s all ease;
+}
+
+.leftbox {
+  left: -2%;
+}
+.rightbox {
+  right: -2%;
+  top: 30%;
+}
+
+/* font & button styling */
+h1 {
+  font-family: $sans-serif;
+  text-align: center;
+  margin-top: 95px;
+  text-transform: uppercase;
+  color: $white;
+  font-size: 2em;
+  letter-spacing: 8px;
+}
+
+.title {
+  font-family: $serif;
+  color: $gray;
+  font-size: 1.8em;
+  line-height: 1.1em;
+  letter-spacing: 3px;
+  text-align: center;
+  font-weight: 300;
+  margin-top: 20%;
+}
+.desc {
+  margin-top: -8px;
+}
+
+p {
+  font-family: $sans-serif;
+  font-size: 0.7em;
+  letter-spacing: 2px;
+  color: $gray;
+  text-align: center;
+}
+
+span {
+  color: $paleblue;
+}
+
+.button {
+  padding: 12px;
+  font-family: $sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  &:hover {
+    background: $darkerblue;
+    color: $white;
+    transition: background-color 1s ease-out;
+    cursor: pointer;
+  }
+}
+
+.button {
+  margin-top: 3%;
+  background: $white;
+  color: $darkerblue;
+  border: solid 1px $darkerblue;
+}
+
+/* form styling */
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+.submit {
+  margin-top: 25px;
+  padding: 12px;
+  border-color: $darkerblue;
+  &:hover {
+    background: $paleblue;
+    border-color: darken($paleblue, 5%);
+  }
+}
+
+input {
+  background: $paleblue;
+  width: 65%;
+  color: $darkerblue;
+  border: none;
+  border-bottom: 1px solid rgba($white, 0.5);
+  padding: 9px;
+  margin: 7px;
+  &::placeholder {
+    color: rgba($white, 1);
+    letter-spacing: 2px;
+    font-size: 1.3em;
+    font-weight: 100;
+  }
+  &:focus {
+    color: $darkerblue;
+    outline: none;
+    border-bottom: 1.2px solid rgba($darkerblue, 0.7);
+    font-size: 1em;
+    transition: 0.8s all ease;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}
+
+.sent {
+  position: relative;
+  & h1 {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+}
+
+#sendmsg {
+  position: absolute;
+  top: 220%;
+  left: 50%;
+  z-index: 999;
+}
+
+// Misc
+$curve: cubic-bezier(0.65, 0, 0.45, 1);
+
+.checkmark {
+  position: absolute;
+  margin-top: 50%;
+  margin-left: 40%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: $paleblue;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px $white;
+  animation: fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: $white;
+  fill: none;
+  animation: stroke 0.6s $curve forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s $curve 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px $white;
+  }
 }
