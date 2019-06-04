@@ -3,7 +3,7 @@ import Card from "./Card";
 import { TimelineLite, Power3 } from "gsap";
 import { Link } from "react-router-dom";
 import Music from "./Music";
-import Form from "./Contact";
+import Form from "./Form";
 
 import styled from "styled-components";
 

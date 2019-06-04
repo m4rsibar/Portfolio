@@ -22,16 +22,24 @@ body {
   box-sizing: border-box;
 }
 
-svg {
+.name {
   height: 80%;
   z-index: 999999999;
+
+  & path {
+    stroke: #000000;
+    fill: #000000;
+    stroke-dasharray: 500;
+    opacity: 2;
+    animation: animate 2s cubic-bezier(0, 0.23, 1, 0.1);
+  }
 }
-path {
-  stroke: #000000;
-  fill: #000000;
-  stroke-dasharray: 500;
-  opacity: 2;
-  animation: animate 2s cubic-bezier(0, 0.23, 1, 0.1);
+
+.checkmark {
+  height: 5em;
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 40%;
 }
 
 .noThanks {
@@ -365,24 +373,25 @@ $serif: "Lora", serif;
   height: 500px;
   border-radius: 5px;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   z-index: 2;
 }
 
-.nodisplay {
-  display: none;
-  transition: all 0.5s ease;
-}
+// .nodisplay {
+//   display: none;
+//   transition: all 0.2s ease;
+// }
 
 .leftbox,
 .rightbox {
   position: absolute;
   width: 50%;
-  transition: 1s all ease;
+  transition: 0.2s all ease;
 }
 
 .leftbox {
   left: -2%;
+  font-size: 1.4em;
 }
 .rightbox {
   right: -2%;
@@ -498,9 +507,11 @@ input {
 
 .sent {
   position: relative;
-  & h1 {
+  visibility: hidden;
+  tran & h1 {
     position: absolute;
     margin-left: auto;
+    color: black;
     margin-right: auto;
     left: 0;
     right: 0;
@@ -509,65 +520,64 @@ input {
 
 #sendmsg {
   position: absolute;
-  top: 220%;
-  left: 50%;
+  right: 20%;
+  top: 90%;
   z-index: 999;
 }
 
 // Misc
-$curve: cubic-bezier(0.65, 0, 0.45, 1);
 
-.checkmark {
-  position: absolute;
-  margin-top: 50%;
-  margin-left: 40%;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: $paleblue;
-  stroke-miterlimit: 10;
-  box-shadow: inset 0px 0px 0px $white;
-  animation: fill 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
-}
+// .checkmark {
+//   position: absolute;
+//   margin-top: 50%;
+//   margin-left: 40%;
+//   width: 56px;
+//   height: 56px;
+//   border-radius: 50%;
+//   display: block;
+//   stroke-width: 2;
+//   stroke: $paleblue;
+//   stroke-miterlimit: 10;
+//   box-shadow: inset 0px 0px 0px $white;
+//   animation: fill 0.4s ease-in-out 0.4s forwards,
+//     scale 0.3s ease-in-out 0.9s both;
+// }
 
-.checkmark__circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: $white;
-  fill: none;
-  animation: stroke 0.6s $curve forwards;
-}
+// .checkmark__circle {
+//   stroke-dasharray: 166;
+//   stroke-dashoffset: 166;
+//   stroke-width: 2;
+//   stroke-miterlimit: 10;
+//   stroke: $white;
+//   fill: none;
+//   animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+// }
 
-.checkmark__check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.3s $curve 0.8s forwards;
-}
+// .checkmark__check {
+//   transform-origin: 50% 50%;
+//   stroke-dasharray: 48;
+//   stroke-dashoffset: 48;
+//   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+// }
 
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
+// @keyframes stroke {
+//   100% {
+//     stroke-dashoffset: 0;
+//   }
+// }
 
-@keyframes scale {
-  0%,
-  100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
+// @keyframes scale {
+//   0%,
+//   100% {
+//     transform: none;
+//   }
+//   50% {
+//     transform: scale3d(1.1, 1.1, 1);
+//   }
+// }
 
-@keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px $white;
-  }
-}
+// @keyframes fill {
+//   100% {
+//     box-shadow: inset 0px 0px 0px 30px $white;
+//   }
+// }

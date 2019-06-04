@@ -7,7 +7,7 @@ import About from "./About";
 import Music from "./Music";
 import Scroll from "./Scroll";
 import { TweenMax, TweenLite, Power2, TimelineLite } from "gsap";
-import Form from "./Contact";
+import Form from "./Form";
 
 class App extends Component {
   music = null;
@@ -33,7 +33,6 @@ class App extends Component {
         <Route exact path="/" render={() => <Home />} />
         <Route path="/work" component={MyWork} />
         <Route path="/about" component={About} />
-        <Route path="/contact" component={Form} />
       </HashRouter>
     );
   }

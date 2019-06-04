@@ -3,6 +3,7 @@ import React from "react";
 const NameSvg = () => {
   return (
     <svg
+      className="name"
       xmlns="http://www.w3.org/2000/svg"
       width="210mm"
       height="297mm"
