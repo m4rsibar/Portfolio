@@ -32,7 +32,14 @@ class App extends Component {
         <Route path="/" render={() => <Scroll />} />
         <Route exact path="/" render={() => <Home />} />
         <Route path="/work" component={MyWork} />
-        <Route path="/about" component={About} />
+        <Route
+          path="/about"
+          render={({ location }) => <About location={location} />}
+        />
+        <Route
+          path="/contact"
+          render={({ location }) => <Form location={location} />}
+        />
       </HashRouter>
     );
   }

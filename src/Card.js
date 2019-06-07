@@ -5,7 +5,11 @@ export default React.forwardRef((props, ref) => {
     <div className="slide">
       <div className={`number${props.id} card`} ref={ref.ref1}>
         <div className={`${props.card.id} card-img`} />
-        <div className="card-content">
+        <div
+          className={`card-content ${
+            props.id == "2" ? props.removePadding : null
+          }`}
+        >
           <h2 className="card-header">{props.card.header}</h2>
           <div className="card-para"> {props.card.info}</div>
           <p className="card-para"> {props.card.info2}</p>

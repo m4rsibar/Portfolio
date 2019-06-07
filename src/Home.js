@@ -24,7 +24,7 @@ class Home extends Component {
     liText: [
       { li: "My Work", id: 1, to: "/work" },
       { li: "About Me", id: 2, to: "/about" },
-      { li: "Contact Me", id: 2, to: "/about#contact" }
+      { li: "Contact Me", id: 2, to: "/contact" }
     ],
     welcomeTxt: [{ word: "Hello", id: 1 }, { word: "I'm", id: 2 }],
     playing: false,

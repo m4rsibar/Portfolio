@@ -4,7 +4,10 @@ import Check from "./Check";
 
 class Form extends Component {
   state = {
-    sent: false
+    sent: false,
+    name: "",
+    email: "",
+    message: ""
   };
 
   tl = new TimelineLite({ paused: true });
@@ -17,29 +20,53 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.tl
-      .to(this.blueBox, 0.65, { x: "-80%" })
+      .to(this.blueBox, 0.65, { x: "-87%" })
       .to(this.contact, 0.65, { height: 0, visibility: "hidden" })
       .to(this.sent, 0.65, { visibility: "visible" })
       .to(this.sendMsg, 0.65, { opacity: 0 });
     this.tl.play();
   };
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
-      <div className="form-container">
+      <div
+        className={
+          this.props.location.pathname == "/contact"
+            ? "centered"
+            : "form-container"
+        }
+      >
         <div className="welcome">
           <div className="bluebox" ref={div => (this.blueBox = div)}>
             <div className="contact" ref={div => (this.contact = div)}>
               <h1>contact me</h1>
               <form autoComplete="off" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  onChange={this.handleChange}
+                  value={this.state.name}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                />
                 <textarea
                   rows={12}
                   cols={30}
                   placeholder="Your Message Here"
                   className="message"
-                  defaultValue={""}
+                  name="message"
+                  onChange={this.handleChange}
+                  value={this.state.message}
                 />
                 <button
                   className="button"
@@ -54,24 +81,6 @@ class Form extends Component {
             <div className={`sent`} ref={div => (this.sent = div)}>
               <h1>Sent</h1>
               <Check sent={this.state.sent} />
-              {/* <svg
-                className="checkmark"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 52 52"
-              >
-                <circle
-                  className="checkmark__circle"
-                  cx={26}
-                  cy={26}
-                  r={25}
-                  fill="none"
-                />
-                <path
-                  className="checkmark__check"
-                  fill="none"
-                  d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                />
-              </svg> */}
             </div>
           </div>
           <div className="leftbox">

@@ -38,7 +38,7 @@ class About extends Component {
       {
         // id: "img03",
         // info: <a href="#"> Github </a>,
-        info: <Form />
+        info: <Form location={this.props.location} />
       }
     ]
   };
@@ -116,6 +116,7 @@ class About extends Component {
         ref={{ ref1: this["card" + i], ref2: this.button }}
         slideUp={this.slideUp}
         slideDown={this.slideDown}
+        removePadding={"noPadding"}
       />
     );
   }
