@@ -504,7 +504,7 @@ form {
 input {
   // background: $paleblue;
   width: 65%;
-  color: $darkerblue;
+  color: $dark;
   border: none;
   border-bottom: 1px solid rgba($white, 0.5);
   padding: 9px;
@@ -518,9 +518,8 @@ input {
     text-align: center;
   }
   &:focus {
-    color: $darkerblue;
     outline: none;
-    border-bottom: 1.2px solid rgba($darkerblue, 0.7);
+    border-bottom: 1.2px solid rgba($dark, 0.2);
     font-size: 1em;
     transition: 0.8s all ease;
     &::placeholder {
