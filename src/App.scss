@@ -329,7 +329,7 @@ body {
 
 //form
 $gray: #8e9aaf;
-$paleblue: #a0d4db;
+$paleblue: rgba(187, 238, 238, 0.7);
 $white: #f6f6f6;
 
 $darkerblue: darken($paleblue, 20%);
@@ -412,6 +412,7 @@ $serif: "Lora", serif;
   font-size: 1.4em;
 }
 .rightbox {
+  opacity: 0;
   right: -2%;
   top: 30%;
 }

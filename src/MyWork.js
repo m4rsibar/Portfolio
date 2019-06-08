@@ -2,7 +2,14 @@ import React, { Component } from "react";
 
 class MyWork extends Component {
   render() {
-    return <h1>My Work Page</h1>;
+    return (
+      <div>
+        <h1 style={{ color: "black" }}>My Work Page</h1>{" "}
+        <h4 style={{ textAlign: "center", fontWeight: "lighter" }}>
+          coming soon
+        </h4>
+      </div>
+    );
   }
 }
 

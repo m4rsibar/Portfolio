@@ -16,13 +16,18 @@ class Form extends Component {
   contact = null;
   sent = null;
   sendMsg = null;
+  thankYou = null;
+  leftBox = null;
 
   handleSubmit = e => {
     e.preventDefault();
+
     this.tl
       .to(this.blueBox, 0.65, { x: "-87%" })
-      .to(this.contact, 0.65, { height: 0, visibility: "hidden" })
-      .to(this.sent, 0.65, { visibility: "visible" })
+      .to(this.leftBox, 0.1, { opacity: 0 }, "smooth")
+      .to(this.thankYou, 0.65, { opacity: 1 }, "smooth")
+      .to(this.contact, 0.5, { height: 0, visibility: "hidden" }, "smooth")
+      .to(this.sent, 0.65, { visibility: "visible" }, "smooth+=.2")
       .to(this.sendMsg, 0.65, { opacity: 0 });
     this.tl.play();
   };
@@ -83,7 +88,7 @@ class Form extends Component {
               <Check sent={this.state.sent} />
             </div>
           </div>
-          <div className="leftbox">
+          <div className="leftbox" ref={div => (this.leftBox = div)}>
             <h2 className="title">
               <br />
               Let's <span>Create</span>
@@ -92,7 +97,7 @@ class Form extends Component {
               something <span>together</span>
             </p>
           </div>
-          <div className="rightbox">
+          <div className="rightbox" ref={div => (this.thankYou = div)}>
             <h2 className="title">
               <span>Thank You!</span>
             </h2>
