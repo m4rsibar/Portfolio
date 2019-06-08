@@ -6,6 +6,7 @@
   font-family: "Neou-Bold";
   src: url("./fonts/Neou-Bold.ttf");
 }
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display|Raleway&display=swap");
 
 .hero {
   background-image: url("./img/portpic.svg");
@@ -329,7 +330,9 @@ body {
 
 //form
 $gray: #8e9aaf;
-$paleblue: rgba(187, 238, 238, 0.7);
+$paleblue: #c4f3ff;
+$dark: #1a1919;
+$nonTransparentPaleBlue: darken($paleblue, 20%);
 $white: #f6f6f6;
 
 $darkerblue: darken($paleblue, 20%);
@@ -337,15 +340,15 @@ $darkerblue: darken($paleblue, 20%);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 
 $sans-serif: "Open Sans", sans-serif;
-$serif: "Lora", serif;
+$serif: "Poppins", sans-serif;
 
 .message {
-  background: $paleblue;
   border-color: white;
-  text-align: left;
-
   &:focus {
     outline: none;
+  }
+  &::placeholder {
+    text-align: center;
   }
 }
 
@@ -366,7 +369,7 @@ $serif: "Lora", serif;
 }
 
 .welcome {
-  background: $white;
+  background: $paleblue;
   width: 650px;
   height: 415px;
   border-radius: 5px;
@@ -386,7 +389,7 @@ $serif: "Lora", serif;
   position: absolute;
   top: -10%;
   right: 5%;
-  background: $paleblue;
+  background: rgba($white, 0.6);
   width: 320px;
   height: 500px;
   border-radius: 5px;
@@ -419,17 +422,16 @@ $serif: "Lora", serif;
 
 /* font & button styling */
 h1 {
-  font-family: $sans-serif;
   text-align: center;
   margin-top: 95px;
   text-transform: uppercase;
-  color: $white;
+  color: $dark;
   font-size: 2em;
   letter-spacing: 8px;
+  font-weight: lighter;
 }
 
 .title {
-  font-family: $serif;
   color: $gray;
   font-size: 1.8em;
   line-height: 1.1em;
@@ -451,7 +453,8 @@ p {
 }
 
 span {
-  color: $paleblue;
+  color: $dark;
+  font-weight: 400;
 }
 
 .button {
@@ -499,18 +502,20 @@ form {
 }
 
 input {
-  background: $paleblue;
+  // background: $paleblue;
   width: 65%;
   color: $darkerblue;
   border: none;
   border-bottom: 1px solid rgba($white, 0.5);
   padding: 9px;
   margin: 7px;
+  border-radius: 4px;
   &::placeholder {
-    color: rgba($white, 1);
+    color: rgba($dark, 0.4);
     letter-spacing: 2px;
     font-size: 1.3em;
     font-weight: 100;
+    text-align: center;
   }
   &:focus {
     color: $darkerblue;
