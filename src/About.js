@@ -26,10 +26,7 @@ class About extends Component {
         id: "img01",
         header: "Technology",
         info:
-          "React "</br>
-          "Animation "</br>
-          "Python " </br>
-          "SQL" </br>
+          "React | Animation | Python | SQL"
       },
       {
         id: "img02",
