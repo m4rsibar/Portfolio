@@ -31,7 +31,7 @@ class About extends Component {
       {
         id: "img02",
         header: "A Little About me",
-        info: "A learning software development intern" 
+        info: "A learning software development intern in Louisville, KY" 
         
       },
       {
