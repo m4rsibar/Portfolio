@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { TimelineLite, Power3 } from "gsap";
+import { TimelineLite } from "gsap";
+import Soon from "./Soon";
 import { Link } from "react-router-dom";
-import Music from "./Music";
-import Form from "./Form";
 
 import styled from "styled-components";
 
@@ -25,19 +24,17 @@ class About extends Component {
       {
         id: "img01",
         header: "Technology",
-        info:
-          "React | Animation | Python | SQL"
+        info: "React | Animation | Python | SQL"
       },
       {
         id: "img02",
         header: "A Little About me",
-        info: "A learning software development intern in Louisville, KY" 
-        
+        info: "A learning software development intern in Louisville, KY"
       },
       {
         // id: "img03",
         // info: <a href="#"> Github </a>,
-        info: <Form location={this.props.location} />
+        info: <Soon location={this.props.location} />
       }
     ]
   };
@@ -94,12 +91,13 @@ class About extends Component {
   render() {
     return (
       <Wrapper className="cardWrapper">
-        <Link to="/">
+        {/* <Link to="/">
           <img
             className="home"
             src="https://img.icons8.com/ios/30/000000/home-page.png"
+            alt="home"
           />
-        </Link>
+        </Link> */}
         {this.state.aboutCards.map(this.createCards)}
       </Wrapper>
     );
