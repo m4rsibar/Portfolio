@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import NameSvg from "./name";
 import Scroll from "./Scroll";
-import Music from "./Music";
 import Hero from "./Hero";
-import styled, { keyframes } from "styled-components";
-import { TweenMax, TweenLite, Power1, Power2, TimelineLite } from "gsap";
-import { NavLink, Link } from "react-router-dom";
+import styled from "styled-components";
+import { Power1, Power2, TimelineLite } from "gsap";
+import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
 class Home extends Component {
@@ -26,7 +25,10 @@ class Home extends Component {
       { li: "About Me", id: 2, to: "/about" },
       { li: "Contact Me", id: 2, to: "/contact" }
     ],
-    welcomeTxt: [{ word: "Hello", id: 1 }, { word: "I'm", id: 2 }],
+    welcomeTxt: [
+      { word: "Hello", id: 1 },
+      { word: "I'm", id: 2 }
+    ],
     playing: false,
     showMusicMessage: true
   };
