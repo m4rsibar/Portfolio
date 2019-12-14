@@ -1,34 +1,40 @@
 import React, { Component } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Player from "./Player";
-import soundfile from "./sly.mp3";
+import soundfile from "./lofi.mp3";
 
 class Music extends Component {
-  state = {
-    playing: false,
-    showMusicMessage: true
-  };
+  constructor(props) {
+    super(props);
+    this.audioRef = React.createRef();
+    this.state = {
+      playing: false,
+      showMusicMessage: true
+    };
+  }
 
   changePlayingState = () => {
-    this.setState({ playing: !this.state.playing });
+    if (!this.state.playing) {
+      this.setState({ playing: true });
+      this.audioRef.current.play();
+    } else {
+      this.setState({ playing: false });
+      this.audioRef.current.pause();
+    }
+    console.log(this.state.playing);
   };
 
   hideMusicMessage = () => {
     this.setState({ showMusicMessage: false });
   };
-
-  logEnd = () => {
-    if (!this.sound.paused || !this.sound.currentTime) {
-      console.log("end");
-    }
-  };
-
   render() {
     return (
       <MusicB ref={this.props.innerRef}>
-        {this.state.playing ? (
-          <audio ref={this.sound} src={soundfile} autoPlay />
-        ) : null}
+        <audio
+          ref={this.audioRef}
+          src={soundfile}
+          autoPlay={this.state.playing}
+        ></audio>
         {this.state.showMusicMessage ? (
           <ToolTip>
             pst..could i interest you in some music for your stay?
@@ -38,11 +44,13 @@ class Music extends Component {
           </ToolTip>
         ) : null}
 
-        <a onClick={this.changePlayingState}>
+        <a onClick={() => this.changePlayingState()}>
           {this.state.playing ? (
             <img
               src="https://img.icons8.com/material/48/000000/circled-pause.png"
               key={"pause"}
+              className="pauseButton"
+              alt="pause button"
             />
           ) : (
             <img
