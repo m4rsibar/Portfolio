@@ -1,26 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 const Hero = React.forwardRef((props, ref) => (
   <HeroStyled ref={ref} className="hero" title="made with adobe illustrator" />
 ));
-
-const HeroStyled = styled.div`
-  opacity: 0;
-  grid-column: 4/12;
-  grid-row: 1/12;
-  transform: translate(-20%, 20%);
-  &:before {
-    content: "";
-    position: absolute;
-    background: rgba(0, 0, 0, 0.9);
-    height: 100%;
-    width: 0%;
-    display: block;
-    animation: ${building} 1s;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-  }
-`;
 
 const building = keyframes`
   0% {
@@ -38,6 +20,13 @@ const building = keyframes`
     width:0;
     opacity:0;
   }
+`;
+
+const HeroStyled = styled.div`
+  opacity: 0;
+  grid-column: 4/12;
+  grid-row: 1/12;
+  transform: translate(-20%, 20%);
 `;
 
 export default Hero;
