@@ -26,14 +26,16 @@ class About extends Component {
         id: "img01",
         header: "Technology",
         info:
-          "I'm interested in animation and making websites come alive. I primarily work with React. I pay close attention to detail and I think good design is crucial. I attend Code Louisville(a program designed to teach software development) the next course I'll be attending is C#",
-        info2: "I love to learn and build."
+          "React "</br>
+          "Animation "</br>
+          "Python " </br>
+          "SQL" </br>
       },
       {
         id: "img02",
         header: "A Little About me",
-        info:
-          "I'm in the process of finding myself. I always try to enjoy the simple things in life.  I practice minimalism it reminds me that possessions are easy to replace and things are only ...things.  Minimalism helps me to focus on experiences. It helps me to create if I'm organized. I'm not on social media, and haven't been for over a year, I abstain from social media to allot time for what's important and to improve my focus. I have many niche interests, and they're forever growing."
+        info: "A learning software development intern" 
+        
       },
       {
         // id: "img03",
