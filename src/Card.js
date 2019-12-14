@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default React.forwardRef((props, ref) => {
   return (
@@ -7,7 +7,7 @@ export default React.forwardRef((props, ref) => {
         <div className={`${props.card.id} card-img`} />
         <div
           className={`card-content ${
-            props.id == "2" ? props.removePadding : null
+            props.id === "2" ? props.removePadding : null
           }`}
         >
           <h2 className="card-header">{props.card.header}</h2>
