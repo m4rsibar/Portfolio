@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 const Hero = React.forwardRef((props, ref) => (
-  <HeroStyled ref={ref} className="hero" title="made with adobe illustrator" />
+  <HeroStyled ref={ref} className="hero" />
 ));
 
 const building = keyframes`
