@@ -41,7 +41,7 @@ class App extends Component {
               <Link to="/">
                 <img
                   className={
-                    props.location.pathname == "/about"
+                    props.location.pathname === "/about"
                       ? "home"
                       : "homeNotAbsolute"
                   }

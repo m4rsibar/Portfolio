@@ -21,7 +21,6 @@ class Music extends Component {
       this.setState({ playing: false });
       this.audioRef.current.pause();
     }
-    console.log(this.state.playing);
   };
 
   hideMusicMessage = () => {
@@ -44,7 +43,7 @@ class Music extends Component {
           </ToolTip>
         ) : null}
 
-        <a onClick={() => this.changePlayingState()}>
+        <a href="#" onClick={() => this.changePlayingState()}>
           {this.state.playing ? (
             <img
               src="https://img.icons8.com/material/48/000000/circled-pause.png"
