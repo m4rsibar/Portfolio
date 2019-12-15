@@ -17,7 +17,6 @@ const Scroll = React.forwardRef((props, ref) => (
 ));
 
 const ScrollSpy = styled.div`
-  visibility: hidden;
   position: absolute;
   top: 50%;
   right: 4%;
