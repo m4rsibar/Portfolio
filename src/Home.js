@@ -34,7 +34,7 @@ class Home extends Component {
     return (
       <div ref={(div) => (this.wrapper = div)} className="wrapper">
         <div ref={(div) => (this.innerWrapper = div)} className="innerWrapper">
-          <Music ref={(div) => (this.music = div)} />
+          {/* <Music ref={(div) => (this.music = div)} /> */}
 
           <div ref={(div) => (this.nav = div)} className="nav">
             <ul>
