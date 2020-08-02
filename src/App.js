@@ -5,7 +5,6 @@ import Home from "./Home";
 import MyWork from "./MyWork";
 import About from "./About";
 import Music from "./Music";
-import Scroll from "./Scroll";
 import Soon from "./Soon";
 import { TimelineLite } from "gsap";
 
@@ -13,30 +12,20 @@ class App extends Component {
   music = null;
   tl = new TimelineLite({ paused: true });
 
-  componentDidMount() {
-    if (!sessionStorage.getItem("welcomePlayed")) {
-      this.tl.to(this.music, 1, { opacity: 1 }, 4);
-    } else {
-      this.tl.to(this.music, 1, { opacity: 1 }, 1);
-    }
-    this.tl.play();
-  }
-
   render() {
     return (
       <HashRouter>
-        <Route
+        {/* <Route
           path="/"
           render={() => (
             <div>
-              <Music ref={div => (this.music = div)} />
-              <Scroll />
+              <Music ref={(div) => (this.music = div)} />
             </div>
           )}
-        />
+        /> */}
         <Route
           path="/"
-          render={props =>
+          render={(props) =>
             props.location.pathname !== "/" && (
               <Link to="/">
                 <img

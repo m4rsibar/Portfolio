@@ -1,5 +1,5 @@
 import React from "react";
-const Player = props => {
+const Player = (props) => {
   return (
     <div class="container">
       <div class="loader">

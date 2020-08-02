@@ -1,179 +1,69 @@
 import React, { Component } from "react";
-import NameSvg from "./name";
-import Scroll from "./Scroll";
-import Hero from "./Hero";
 import styled from "styled-components";
 import { Power1, Power2, TimelineLite } from "gsap";
 import { NavLink } from "react-router-dom";
-import Logo from "./Logo";
+import "./Styles/Home.scss";
+import Music from "./Music";
 
 class Home extends Component {
   nav = null;
-  hero = null;
-  welcome = null;
   wrapper = null;
-  scroll = null;
-  name = null;
+
   music = null;
   tl = new TimelineLite({ paused: true });
   lis = [];
-  welcomeTxt = [];
 
   state = {
     liText: [
       { li: "My Work", id: 1, to: "/work" },
       { li: "About Me", id: 2, to: "/about" },
-      { li: "Contact Me", id: 2, to: "/contact" }
-    ],
-    welcomeTxt: [
-      { word: "Hello", id: 1 },
-      { word: "I'm", id: 2 }
+      { li: "Contact Me", id: 2, to: "/contact" },
     ],
     playing: false,
-    showMusicMessage: true
+    showMusicMessage: true,
   };
 
   componentDidMount() {
-    if (!sessionStorage.getItem("welcomePlayed")) {
-      this.tl
-        .staggerTo(this.welcomeTxt, 0.6, { opacity: 1, y: 70 }, 0.1)
-        .staggerTo(
-          this.welcomeTxt,
-          0.9,
-          { visibility: "visible", opacity: 0, delay: 0.5 },
-          "prev"
-        )
-        .to(this.name, 0.9, { y: 350, x: -400 }, "prev+=.1")
-        .to(this.hero, 0.8, { opacity: 1, ease: Power2.easeIn }, "prev+=.1")
-        .to(this.nav, 0.3, { opacity: 1 }, "prev+=.1")
-        .staggerTo(
-          this.lis,
-          0.2,
-          { opacity: 1, x: 20, ease: Power1.easeIn },
-          0.1
-        )
-        .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
-
-      this.tl.play();
-      sessionStorage.setItem("welcomePlayed", "yep");
-    } else {
-      this.tl
-        .staggerTo(this.welcomeTxt, 0, { opacity: 1, y: 70 }, 0.1)
-        .staggerTo(
-          this.welcomeTxt,
-          0.9,
-          { visibility: "visible", opacity: 0, delay: 0.5 },
-          "prev"
-        )
-        .to(this.name, 0.9, { y: 350, x: -400 }, "prev+=.5")
-        .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
-        .to(this.hero, 0.9, { opacity: 1 }, "prev+=.9")
-        .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9")
-        .to(this.scroll, 0.9, { visibility: "visible" }, "prev+=2");
-      this.tl.play().progress(1, false);
-    }
+    this.tl
+      .to(this.nav, 0.9, { opacity: 1 }, "prev+=.5")
+      .staggerTo(this.lis, 0.9, { opacity: 1, x: 20 }, "prev+=.9");
+    this.tl.play().progress(1, false);
   }
 
   render() {
     return (
-      <Wrapper ref={div => (this.wrapper = div)}>
-        <Nav ref={div => (this.nav = div)}>
-          <Logo />
-          <ul>
-            {this.state.liText.map((element, index) => (
-              <NavLink to={this.state.liText[index].to}>
-                <li
-                  className="linx"
-                  key={index}
-                  ref={li => (this.lis[index] = li)}
-                >
-                  {element.li}
-                </li>
-              </NavLink>
-            ))}
-          </ul>
-        </Nav>
-        <Welcome ref={div => (this.welcome = div)}>
-          {this.state.welcomeTxt.map((element, index) => (
-            <div
-              className={`welcome${index}`}
-              key={index}
-              ref={div => (this.welcomeTxt[index] = div)}
-            >
-              {element.word}
-              <br />
-            </div>
-          ))}
-          <Name ref={div => (this.name = div)}>
-            <NameSvg className="namesvg" />
-          </Name>
-        </Welcome>
+      <div ref={(div) => (this.wrapper = div)} className="wrapper">
+        <div ref={(div) => (this.innerWrapper = div)} className="innerWrapper">
+          <Music ref={(div) => (this.music = div)} />
 
-        <Scroll ref={div => (this.scroll = div)} />
-        <Enter />
-        <Hero ref={div => (this.hero = div)} />
-      </Wrapper>
+          <div ref={(div) => (this.nav = div)} className="nav">
+            <ul>
+              {this.state.liText.map((element, index) => (
+                <NavLink to={this.state.liText[index].to}>
+                  <li
+                    className="linx"
+                    key={index}
+                    ref={(li) => (this.lis[index] = li)}
+                  >
+                    {element.li}
+                  </li>
+                </NavLink>
+              ))}
+            </ul>
+          </div>
+          <div className="heroText">
+            <div className="textContainer">
+              <p>Hi,</p>
+              <p>I'm Marissa.</p>
+              <p className="smallerText">SOFTWARE DEVELOPER /</p>
+              <p className="smallerText">STUDENT</p>
+            </div>
+          </div>
+          <div className="heroImage"> </div>
+        </div>
+      </div>
     );
   }
 }
 
 export default Home;
-
-const Wrapper = styled.div`
-  display: grid;
-  background: #f8f8f8;
-  height: 100vh;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  font-family: "Roboto Condensed", sans-serif;
-  transform: translateX(-15px);
-  overflow: hidden;
-`;
-
-const Nav = styled.div`
-  opacity: 0;
-  color: black;
-  padding: 2em;
-  grid-column: 1 / 3;
-  grid-row: 1/6;
-  font-family: Neou-Bold;
-  & ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 3em;
-    font-size: 1.1em;
-  }
-  & a {
-    text-decoration: none;
-    color: black;
-  }
-  & li {
-    opacity: 0;
-    padding-bottom: 0.5em;
-  }
-`;
-
-const Name = styled.div`
-    position:absolute;
-    top:-6%;
-    left:-12%;
-    height:300%;
-    grid-column: 1/5;
-    grid-row: 9/13;
-    z-index: 3;
-    }
-  `;
-
-const Enter = styled.div`
-  opacity: 0;
-  background: white;
-  grid-column: 11/13;
-  grid-row: 9/13;
-`;
-
-const Welcome = styled.div`
-  position: relative;
-  transform: translate(100px, 100px);
-  font-family: Neou-Thin;
-  font-size: 100px;
-`;

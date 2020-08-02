@@ -24,19 +24,19 @@ class About extends Component {
       {
         id: "img01",
         header: "Technology",
-        info: "React | Animation | Python | SQL"
+        info: "React | Animation | Python | SQL",
       },
       {
         id: "img02",
         header: "A Little About me",
-        info: "A learning software development intern in Louisville, KY"
+        info: "A learning software development intern in Louisville, KY",
       },
       {
-        // id: "img03",
-        // info: <a href="#"> Github </a>,
-        info: <Soon location={this.props.location} />
-      }
-    ]
+        id: "img03",
+        info: <a href="#"> Github </a>,
+        info: <Soon location={this.props.location} />,
+      },
+    ],
   };
 
   slideUp = () => {

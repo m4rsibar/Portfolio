@@ -9,7 +9,7 @@ class Music extends Component {
     this.audioRef = React.createRef();
     this.state = {
       playing: false,
-      showMusicMessage: true
+      showMusicMessage: true,
     };
   }
 
@@ -28,19 +28,20 @@ class Music extends Component {
   };
   render() {
     return (
-      <MusicB ref={this.props.innerRef}>
+      <div ref={this.props.innerRef} className="musicButtonContainer">
+        {this.state.playing ? <Player playing={this.state.playing} /> : null}
         <audio
           ref={this.audioRef}
           src={soundfile}
           autoPlay={this.state.playing}
         ></audio>
         {this.state.showMusicMessage ? (
-          <ToolTip>
+          <div className="toolTip">
             pst..could i interest you in some music for your stay?
             <button onClick={this.hideMusicMessage} className="noThanks">
               No..thanks
             </button>
-          </ToolTip>
+          </div>
         ) : null}
 
         <a href="#" onClick={() => this.changePlayingState()}>
@@ -61,32 +62,10 @@ class Music extends Component {
             />
           )}
         </a>
-        {this.state.playing ? <Player playing={this.state.playing} /> : null}
-      </MusicB>
+      </div>
     );
   }
 }
-
-const MusicB = styled.div`
-  right: 4em;
-  top: 5em;
-  z-index: 999999;
-  position: absolute;
-  opacity: 0;
-`;
-
-const ToolTip = styled.div`
-  position: absolute;
-  font-size: 0.7em;
-  height: auto;
-  padding: 0.3em;
-  width: 200px;
-  border: 0.3px solid black;
-  border-radius: 10px;
-  top: 5.5em;
-  right: 0;
-  padding-bottom: 0.2em;
-`;
 
 export default React.forwardRef((props, ref) => (
   <Music innerRef={ref} {...props} />
