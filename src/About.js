@@ -24,7 +24,7 @@ class About extends Component {
       {
         id: "img01",
         header: "Technology",
-        info: "React | Animation | Python | SQL",
+        info: "React | Python | SQL | Design | Hardware ",
       },
       {
         id: "img02",
@@ -120,10 +120,10 @@ class About extends Component {
 }
 
 const Wrapper = styled.div`
+  overflow: hidden;
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 `;
 
 export default About;
