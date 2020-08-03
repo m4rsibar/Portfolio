@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.scss";
+import "./styles/App.scss";
 import { HashRouter, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import MyWork from "./MyWork";
@@ -15,14 +15,8 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
-        {/* <Route
-          path="/"
-          render={() => (
-            <div>
-              <Music ref={(div) => (this.music = div)} />
-            </div>
-          )}
-        /> */}
+        <Music ref={(div) => (this.music = div)} />
+
         <Route
           path="/"
           render={(props) =>

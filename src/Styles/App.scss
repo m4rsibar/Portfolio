@@ -1,17 +1,21 @@
 @font-face {
   font-family: "Neou-Thin";
-  src: url("./fonts/Neou-Thin.ttf");
+  src: url("../fonts/Neou-Thin.ttf");
 }
+
 @font-face {
   font-family: "Neou-Bold";
-  src: url("./fonts/Neou-Bold.ttf");
+  src: url("../fonts/Neou-Bold.ttf");
 }
+
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Raleway&display=swap");
 
 .musicButtonContainer {
   position: absolute;
   right: 10em;
+  top: 4.5em;
   display: flex;
+  z-index: 1;
 }
 
 .playButton,
@@ -167,13 +171,13 @@ body {
 }
 
 .img01 {
-  background-image: url(./img/tech.jpg);
+  background-image: url(../img/tech.jpg);
   background-size: cover;
   background-position-x: 0px;
 }
 
 .img02 {
-  background-image: url(./img/bike.jpg);
+  background-image: url(../img/bike.jpg);
 }
 
 .img03 {

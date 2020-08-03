@@ -43,7 +43,7 @@ class Music extends Component {
           </div>
         ) : null}
 
-        <a href="#" onClick={() => this.changePlayingState()}>
+        <a onClick={() => this.changePlayingState()}>
           {this.state.playing ? (
             <img
               src="https://img.icons8.com/material/48/000000/circled-pause.png"
