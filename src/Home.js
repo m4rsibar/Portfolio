@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { Power1, Power2, TimelineLite } from "gsap";
 import { NavLink } from "react-router-dom";
 import "./Styles/Home.scss";
