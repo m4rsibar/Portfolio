@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import Player from "./Player";
-import soundfile from "./lofi.mp3";
+import soundfile from "./audio/lofi.mp3";
 
 class Music extends Component {
   constructor(props) {
