@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Power1, Power2, TimelineLite } from "gsap";
 import { NavLink } from "react-router-dom";
-import "./styles/Home.scss";
+import "./Home.scss";
 import Music from "./Music";
 
 class Home extends Component {
